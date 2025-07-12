@@ -173,3 +173,4 @@ tmp/**/*
 # ただし、.gitkeepファイルは保持
 !tmp/**/.gitkeep
 !**/tmp/**/.gitkeep
+.vscode/settings.json

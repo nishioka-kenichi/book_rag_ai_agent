@@ -1,0 +1,11 @@
+# Cursorignore file
+# This file tells Cursor which files to ignore
+
+# Do NOT ignore .env files
+!.env
+!.env.*
+
+# Ignore these
+__pycache__/
+*.pyc
+.DS_Store

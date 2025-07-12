@@ -1,0 +1,12 @@
+# Jupyter Notebook実行環境
+jupyter==1.0.0
+notebook==7.0.8
+ipykernel==6.29.0
+ipywidgets==8.1.1
+
+# 基本パッケージ
+python-dotenv==1.0.1
+openai==1.40.6
+httpx==0.27.2
+pydantic==2.10.3
+numpy==1.26.4
