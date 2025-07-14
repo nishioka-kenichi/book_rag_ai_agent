@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(.venv/bin/python:*)",
+      "Bash(brew install:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(rustc:*)",
+      "Bash(python:*)",
+      "Bash(cat:*)"
+    ],
+    "deny": []
+  }
+}
