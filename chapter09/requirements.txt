@@ -4,5 +4,8 @@
 # Chapter 09で使用するパッケージ
 langchain==0.3.0
 langchain-openai==0.2.0
+langchain-community==0.3.0
+langchain-core==0.3.0
 langgraph==0.2.22
 langgraph-checkpoint==1.0.11
+pygraphviz
