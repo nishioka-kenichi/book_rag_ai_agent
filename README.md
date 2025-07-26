@@ -2,55 +2,170 @@
 
 「LangChain と LangGraph による RAG・AI エージェント［実践］入門」の GitHub リポジトリです。
 
+> **Note**: このリポジトリは[書籍公式リポジトリ](https://github.com/GenerativeAgents/agent-book)からフォークし、ローカル環境での実行に対応させたものです。
+
 https://www.amazon.co.jp/dp/4297145308
 
 <img src="assets/cover.jpg" width="50%" />
 
 ## 各章のソースコード
 
-| 章                                                                  | ソースコード                                                                                                                                                                          |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 第 1 章 LLM アプリケーション開発の基礎                              | -                                                                                                                                                                                     |
-| 第 2 章 OpenAI の チャット API の基礎                               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenerativeAgents/agent-book/blob/main/chapter02/notebook.ipynb) |
-| 第 3 章 プロンプトエンジニアリング                                  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenerativeAgents/agent-book/blob/main/chapter03/notebook.ipynb) |
-| 第 4 章 LangChain の基礎                                            | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenerativeAgents/agent-book/blob/main/chapter04/notebook.ipynb) |
-| 第 5 章 LangChain Expression Language（LCEL）徹底解説               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenerativeAgents/agent-book/blob/main/chapter05/notebook.ipynb) |
-| 第 6 章 Advanced RAG                                                | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenerativeAgents/agent-book/blob/main/chapter06/notebook.ipynb) |
-| 第 7 章 LangSmith を使った RAG アプリケーションの評価               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenerativeAgents/agent-book/blob/main/chapter07/notebook.ipynb) |
-| 第 8 章 AI エージェントとは                                         | -                                                                                                                                                                                     |
-| 第 9 章 LangGraph で作る AI エージェント実践入門                    | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenerativeAgents/agent-book/blob/main/chapter09/notebook.ipynb) |
-| 第 10 章 要件定義書生成 AI エージェントの開発                       | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenerativeAgents/agent-book/blob/main/chapter10/notebook.ipynb) |
-| 第 11 章 エージェントデザインパターン                               | -                                                                                                                                                                                     |
-| 第 12 章 LangChain/LangGraph で実装するエージェントデザインパターン | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenerativeAgents/agent-book/blob/main/chapter12/notebook.ipynb) |
+| 章 | 内容 |
+|---|---|
+| 第 1 章 | LLM アプリケーション開発の基礎 |
+| 第 2 章 | OpenAI の チャット API の基礎 |
+| 第 3 章 | プロンプトエンジニアリング |
+| 第 4 章 | LangChain の基礎 |
+| 第 5 章 | LangChain Expression Language（LCEL）徹底解説 |
+| 第 6 章 | Advanced RAG |
+| 第 7 章 | LangSmith を使った RAG アプリケーションの評価 |
+| 第 8 章 | AI エージェントとは |
+| 第 9 章 | LangGraph で作る AI エージェント実践入門 |
+| 第 10 章 | 要件定義書生成 AI エージェントの開発 |
+| 第 11 章 | エージェントデザインパターン |
+| 第 12 章 | LangChain/LangGraph で実装するエージェントデザインパターン |
 
-## 動作確認環境
+## 必要な環境
 
-本書のソースコードは以下の環境・バージョンで動作確認しました。
-
-- Google Colab
-- Python 3.10.12
+- Python 3.10-3.13（推奨：3.12）
+  - ⚠️ Python 3.13では tiktoken 0.7.0 のビルド済みホイールがないため、追加設定が必要です
+- VS Code または Cursor
+- Git
 
 Python パッケージの動作確認済みバージョンは、各章のディレクトリの requirements.txt を参照してください。
 
+## セットアップ手順
+
+### 1. リポジトリのクローン
+
+```bash
+git clone https://github.com/GenerativeAgents/agent-book.git
+cd agent-book
+```
+
+### 2. 環境構築
+
+```bash
+# セットアップスクリプトを実行
+./setup.sh
+```
+
+このスクリプトは以下を自動実行します：
+- Python仮想環境の作成（.venv）
+- 必要なパッケージのインストール
+- Jupyter kernelの登録
+- .envファイルの作成（.env.exampleから）
+
+### 3. APIキーの設定
+
+`.env`ファイルを編集して、必要なAPIキーを設定します：
+
+```bash
+# .envファイルを編集
+nano .env  # または好みのエディタで開く
+```
+
+必要なAPIキー：
+- `OPENAI_API_KEY`：全章で必要
+- `LANGCHAIN_API_KEY`：Chapter 7以降で必要（LangSmith）
+- `COHERE_API_KEY`：Chapter 6で必要
+- `ANTHROPIC_API_KEY`：Chapter 12で必要
+- `TAVILY_API_KEY`：Chapter 12で必要
+
+### 4. VS Code/Cursorで開く
+
+1. VS Code/Cursorでプロジェクトフォルダを開く
+2. Python拡張機能がインストールされていることを確認
+3. 各章の`notebook.ipynb`ファイルを開く
+4. カーネルとして「RAG AI Agent Book」を選択
+
+## 各章の実行
+
+### 共通の注意事項
+
+- `!pip install`コマンドはコメントアウトされています（事前インストール済み）
+- 環境変数からAPIキーを自動読み込み
+- ファイルパスは相対パス（`./data/`等）を使用
+
+### 章ごとの追加要件
+
+各章のディレクトリに移動して、追加パッケージをインストール：
+
+```bash
+# 例：Chapter 4の場合
+cd chapter04
+pip install -r requirements.txt
+```
+
+## トラブルシューティング
+
+### Python 3.13でtiktokenがインストールできない
+
+#### 方法1: Python 3.12以下を使用（推奨）
+
+```bash
+# pyenvの場合
+pyenv install 3.12.7
+pyenv local 3.12.7
+```
+
+#### 方法2: Python 3.13でRustを使用してビルド
+
+1. Rustをインストール：
+```bash
+brew install rust  # macOSの場合
+# または
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+2. ビルドツールをインストール：
+```bash
+source .venv/bin/activate
+pip install setuptools-rust
+```
+
+3. requirements.txtを修正（tiktoken>=0.7.0に変更）してインストール：
+```bash
+pip install -r chapter02/requirements.txt
+```
+
+**注意**: tiktoken 0.9.0以降はPython 3.13用のビルド済みホイールが提供されているため、最新版を使用することで問題を回避できます。
+
+### APIキーエラー
+
+`.env`ファイルが正しく設定されているか確認：
+
+```bash
+# 環境変数の確認
+python -c "import os; print(os.getenv('OPENAI_API_KEY'))"
+```
+
+### Jupyter kernelが見つからない
+
+再度kernelを登録：
+
+```bash
+source .venv/bin/activate
+python -m ipykernel install --user --name=rag_ai_agent_book --display-name="RAG AI Agent Book"
+```
+
+### パッケージの依存関係エラー
+
+特定のバージョンで問題が発生した場合：
+
+```bash
+# キャッシュをクリアして再インストール
+pip cache purge
+pip install --force-reinstall -r requirements-base.txt
+```
+
+## 開発のヒント
+
+- 各章は独立して実行可能
+- 仮想環境を有効化してから作業：`source .venv/bin/activate`
+- 新しいパッケージを追加した場合は`requirements.txt`を更新
+
 ## 既知のエラー
-
-### Python パッケージのバージョンに起因するエラー
-
-- httpx
-  - openai パッケージが依存する httpx のアップデートにより、`openai==1.40.6` を使用する箇所で `TypeError: Client.__init__() got an unexpected keyword argument 'proxies'` というエラーが発生するようになりました。
-  - このエラーは、`!pip install httpx==0.27.2` のように、httpx の特定バージョンをインストールすることで回避できます。
-- pydantic
-  - pydantic のアップデートにより、明示的に pydantic のバージョンを指定していない箇所で ChatOpenAI などを使用すると、`PydanticUserError: 'ChatOpenAI' is not fully defined; you should define 'BaseCache', then call 'ChatOpenAI.model_rebuild()'.` というエラーが発生するようになりました。
-  - このエラーは、`!pip install pydantic==2.10.6` のように、pydantic の特定バージョンをインストールすることで回避できます。
-- numpy
-  - Google Colab にデフォルトでインストールされている numpy のバージョンが更新されたことにより、6 章の「Cohere のリランクモデルの導入」箇所などで `ValueError: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject` というエラーが発生するようになりました。
-  - このエラーは、`!pip install numpy==1.26.4` のように、numpy の特定バージョンをインストールして、Google Colab の「ランタイム」から「セッションを再起動する」を実行することで回避できます。
-
-> [!WARNING]
-> Google Colab で一度上記のエラーに遭遇したあとで `!pip install httpx==0.27.2` のようにパッケージをインストールし直した場合、以下のどちらかの操作を実施する必要があります。
->
-> - Google Colab の「ランタイム」から「セッションを再起動する」を実行する
-> - 「ランタイムを接続解除して削除」を実行してパッケージのインストールからやり直す
 
 ### 「7.4 Ragas による合成テストデータの生成」における RateLimitError
 
@@ -95,5 +210,9 @@ https://github.com/GenerativeAgents/agent-book/issues
 
 ## リンク
 
+- [書籍公式リポジトリ](https://github.com/GenerativeAgents/agent-book)
 - [技術評論社](https://gihyo.jp/book/2024/978-4-297-14530-9)
 - [Amazon](https://www.amazon.co.jp/dp/4297145308)
+- [OpenAI API ドキュメント](https://platform.openai.com/docs)
+- [LangChain ドキュメント](https://python.langchain.com/)
+- [LangSmith](https://smith.langchain.com/)
